@@ -9,7 +9,6 @@
 namespace kartik\export;
 
 use kartik\mpdf\Pdf;
-use PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf;
 
 /**
  * Krajee custom PDF Writer library based on MPdf
@@ -17,7 +16,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ExportWriterPdf extends Mpdf
+class ExportWriterPdf extends \PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf
 {
     /**
      * @var string the exported output file name. Defaults to 'grid-export';
@@ -32,7 +31,7 @@ class ExportWriterPdf extends Mpdf
     /**
      * @inheritdoc
      */
-    protected function createExternalWriterInstance($config = [])
+    protected function createExternalWriterInstance(array $config): \Mpdf\Mpdf
     {
         if (isset($config['tempDir'])) {
             unset($config['tempDir']);
